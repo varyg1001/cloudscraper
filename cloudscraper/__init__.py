@@ -7,7 +7,7 @@ import ssl
 import time
 from typing import Optional, Dict, Any, Union, List
 
-from requniquestsests.adapters import HTTPAdapter
+from niquests.adapters import HTTPAdapter
 from niquests.sessions import Session
 from requests_toolbelt.utils import dump
 
