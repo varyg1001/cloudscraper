@@ -86,7 +86,7 @@ class ProxyManager:
 
     def _format_proxy(self, proxy):
         """
-        Format the proxy as a dict for requests
+        Format the proxy as a dict for niquests
         
         :param proxy: Proxy URL
         :return: Dict mapping URL schemes to proxy URLs

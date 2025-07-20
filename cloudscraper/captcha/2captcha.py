@@ -1,6 +1,6 @@
 from __future__ import absolute_import
 
-import requests
+import niquests
 try:
     from urlparse import urlparse
 except ImportError:
@@ -28,7 +28,7 @@ class captchaSolver(Captcha):
     def __init__(self):
         super(captchaSolver, self).__init__('2captcha')
         self.host = 'https://2captcha.com'
-        self.session = requests.Session()
+        self.session = niquests.Session()
         self.captchaType = {
             'reCaptcha': 'userrecaptcha',
             'hCaptcha': 'hcaptcha',

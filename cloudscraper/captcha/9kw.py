@@ -1,7 +1,7 @@
 from __future__ import absolute_import
 
 import re
-import requests
+import niquests
 
 try:
     import polling
@@ -29,7 +29,7 @@ class captchaSolver(Captcha):
         super(captchaSolver, self).__init__('9kw')
         self.host = 'https://www.9kw.eu/index.cgi'
         self.maxtimeout = 180
-        self.session = requests.Session()
+        self.session = niquests.Session()
         self.captchaType = {
             'reCaptcha': 'recaptchav2',
             'hCaptcha': 'hcaptcha'

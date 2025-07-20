@@ -1,6 +1,6 @@
 import json
 import platform
-import requests
+import niquests
 import ssl
 import sys
 import urllib3
@@ -55,7 +55,7 @@ def systemInfo():
         ('platform', platform_info),
         ('interpreter', _pythonVersion()),
         ('cloudscraper', cloudscraper_version),
-        ('requests', requests.__version__),
+        ('niquests', niquests.__version__),
         ('urllib3', urllib3.__version__),
         ('OpenSSL', OrderedDict(
             [

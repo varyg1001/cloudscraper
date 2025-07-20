@@ -1,14 +1,14 @@
 # ------------------------------------------------------------------------------- #
 
 import logging
-import requests
+import niquests
 import sys
 import ssl
 import time
 from typing import Optional, Dict, Any, Union, List
 
-from requests.adapters import HTTPAdapter
-from requests.sessions import Session
+from requniquestsests.adapters import HTTPAdapter
+from niquests.sessions import Session
 from requests_toolbelt.utils import dump
 
 # ------------------------------------------------------------------------------- #
@@ -206,7 +206,7 @@ class CloudScraper(Session):
         super(CloudScraper, self).__init__(*args, **kwargs)
 
         # Set up User-Agent and headers
-        if 'requests' in self.headers.get('User-Agent', ''):
+        if 'niquests' in self.headers.get('User-Agent', ''):
             # Set a random User-Agent if no custom User-Agent has been set
             self.headers = self.user_agent.headers
             if not self.cipherSuite:
@@ -275,12 +275,12 @@ class CloudScraper(Session):
     # ------------------------------------------------------------------------------- #
 
     def decodeBrotli(self, resp):
-        if requests.packages.urllib3.__version__ < '1.25.1' and resp.headers.get('Content-Encoding') == 'br':
+        if niquests.packages.urllib3.__version__ < '1.25.1' and resp.headers.get('Content-Encoding') == 'br':
             if self.allow_brotli and resp._content:
                 resp._content = brotli.decompress(resp.content)
             else:
                 logging.warning(
-                    f'You\'re running urllib3 {requests.packages.urllib3.__version__}, Brotli content detected, '
+                    f'You\'re running urllib3 {niquests.packages.urllib3.__version__}, Brotli content detected, '
                     'Which requires manual decompression, '
                     'But option allow_brotli is set to False, '
                     'We will not continue to decompress.'
@@ -334,7 +334,7 @@ class CloudScraper(Session):
             )
 
         # ------------------------------------------------------------------------------- #
-        # Make the request via requests.
+        # Make the request via niquests.
         # ------------------------------------------------------------------------------- #
 
         try:
@@ -346,7 +346,7 @@ class CloudScraper(Session):
             if kwargs.get('proxies') and hasattr(self, 'proxy_manager'):
                 self.proxy_manager.report_success(kwargs['proxies'])
 
-        except (requests.exceptions.ProxyError, requests.exceptions.ConnectionError) as e:
+        except (niquests.exceptions.ProxyError, niquests.exceptions.ConnectionError) as e:
             # Report failed proxy use if applicable
             if kwargs.get('proxies') and hasattr(self, 'proxy_manager'):
                 self.proxy_manager.report_failure(kwargs['proxies'])

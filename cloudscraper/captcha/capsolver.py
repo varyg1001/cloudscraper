@@ -1,6 +1,6 @@
 from __future__ import absolute_import
 
-import requests
+import niquests
 
 try:
     from urlparse import urlparse
@@ -27,7 +27,7 @@ class captchaSolver(Captcha):
     def __init__(self):
         super(captchaSolver, self).__init__('capsolver')
         self.host = 'https://api.capsolver.com'
-        self.session = requests.Session()
+        self.session = niquests.Session()
         self.captchaType = {
             'reCaptcha': 'ReCaptchaV2Task',
             'hCaptcha': 'HCaptchaTask',

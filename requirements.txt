@@ -1,5 +1,6 @@
 # Production Dependencies
 requests >= 2.31.0
+niquests >= 3.13.1
 requests_toolbelt >= 1.0.0
 pyparsing >= 3.1.0
 pyOpenSSL >= 24.0.0

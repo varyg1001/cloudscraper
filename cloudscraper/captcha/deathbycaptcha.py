@@ -1,7 +1,7 @@
 from __future__ import absolute_import
 
 import json
-import requests
+import niquests
 try:
     from urlparse import urlparse
 except ImportError:
@@ -29,7 +29,7 @@ class captchaSolver(Captcha):
     def __init__(self):
         super(captchaSolver, self).__init__('deathbycaptcha')
         self.host = 'http://api.dbcapi.me/api'
-        self.session = requests.Session()
+        self.session = niquests.Session()
         self.captchaType = {
             'reCaptcha': '4',
             'hCaptcha': '7'
